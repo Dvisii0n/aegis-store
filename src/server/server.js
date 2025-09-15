@@ -41,7 +41,7 @@ app.get("/fetchData", (request, response) => {
         if (error) {
             response.send(error);
         } else {
-            console.log(result.rows);
+            console.log(response);
             response.send(result.rows);
         }
     });
@@ -55,7 +55,7 @@ app.get("/fetchById/:id", (request, response) => {
         if (error) {
             response.send(error);
         } else {
-            console.log(result.rows[0]);
+            console.log(response);
             response.send(result.rows[0]);
         }
     });
