@@ -1,73 +1,80 @@
-async function createRow(url, requestBody) {
-    try {
-        const response = await fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(requestBody),
-        });
-        console.log("POSTED DATA");
-    } catch (error) {
-        throw error;
-    }
-}
+import { baseURL } from "./api.js";
+import { userRoutes } from "../routes/routes.js";
 
-async function fetchRows(url) {
-    try {
-        const response = await fetch(url, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        throw error;
+export default class UsuariosService {
+    async createRow(requestBody) {
+        const url = `${baseURL}${userRoutes.postData}`;
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(requestBody),
+            });
+        } catch (error) {
+            throw error;
+        }
     }
-}
 
-async function fetchByID(url, id) {
-    try {
-        const response = await fetch(`${url}${id}`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        throw `Row With ID: ${id} doesn't exist`;
+    async fetchRows() {
+        const url = `${baseURL}${userRoutes.fetchData}`;
+        try {
+            const response = await fetch(url, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            throw error;
+        }
     }
-}
 
-async function updateRow(url, requestBody, id) {
-    try {
-        const response = await fetch(`${url}${id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(requestBody),
-        });
-        console.log("UPDATED DATA");
-    } catch (error) {
-        throw `Row With ID: ${id} doesn't exist`;
+    async fetchByID(id) {
+        const url = `${baseURL}${userRoutes.fetchById}/${id}`;
+        try {
+            const response = await fetch(url, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            throw `Row With ID: ${id} doesn't exist`;
+        }
     }
-}
 
-async function deleteRow(url, id) {
-    try {
-        const response = await fetch(`${url}${id}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-        console.log("DELETED ROW");
-    } catch (error) {
-        throw `Row With ID: ${id} doesn't exist`;
+    async updateRow(id, requestBody) {
+        const url = `${baseURL}${userRoutes.update}/${id}`;
+        try {
+            const response = await fetch(url, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(requestBody),
+            });
+        } catch (error) {
+            throw `Row With ID: ${id} doesn't exist`;
+        }
+    }
+
+    async deleteRow(id) {
+        const url = `${baseURL}${userRoutes.delete}/${id}`;
+        try {
+            const response = await fetch(url, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+        } catch (error) {
+            throw `Row With ID: ${id} doesn't exist`;
+        }
     }
 }
