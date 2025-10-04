@@ -10,6 +10,6 @@ const u = new UsuariosService();
 //     direccion: "",
 // });
 
-// console.log(await u.fetchRows());
+console.log(await u.fetchRows());
 
 console.log(await u.fetchByID(3));
