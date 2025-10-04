@@ -1,35 +1,35 @@
 import { app, connection } from "../server/server.js";
-import { userRoutes } from "./routes.js";
+import { pedidoItemsRoutes } from "./routes.js";
 import Crud from "./crud.js";
 
-async function setUsersRoutes() {
-    const tableName = "usuarios";
+async function setPedidoItemsRoutes() {
+    const tableName = "pedido_items";
     const crud = new Crud(tableName, connection);
 
-    app.post(userRoutes.postData, async (request, response) => {
+    app.post(pedidoItemsRoutes.postData, async (request, response) => {
         const body = request.body;
         await crud.setPost(body, response);
     });
 
-    app.get(userRoutes.fetchData, async (request, response) => {
+    app.get(pedidoItemsRoutes.fetchData, async (request, response) => {
         await crud.setFetch(response);
     });
 
-    app.get(`${userRoutes.fetchById}/:id`, async (request, response) => {
+    app.get(`${pedidoItemsRoutes.fetchById}/:id`, async (request, response) => {
         const id = request.params.id;
         await crud.setFetchById(id, response);
     });
 
-    app.put(`${userRoutes.update}/:id`, async (request, response) => {
+    app.put(`${pedidoItemsRoutes.update}/:id`, async (request, response) => {
         const id = request.params.id;
         const body = request.body;
         await crud.setUpdate(id, body, response);
     });
 
-    app.delete(`${userRoutes.delete}/:id`, async (request, response) => {
+    app.delete(`${pedidoItemsRoutes.delete}/:id`, async (request, response) => {
         const id = request.params.id;
         await crud.setDelete(id, response);
     });
 }
 
-export { setUsersRoutes };
+export { setPedidoItemsRoutes };
