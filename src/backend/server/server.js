@@ -1,6 +1,7 @@
 import "dotenv/config";
 import { Client } from "pg";
 import express from "express";
+import { setUsersRoute } from "../routes/usuarios.js";
 
 const app = express();
 app.use(express.json());
@@ -15,8 +16,10 @@ const connection = new Client({
 
 connection.connect().then(() => console.log("connected"));
 
+await setUsersRoute();
+
 app.listen(3000, () => {
     console.log("server running...");
 });
 
-export { app };
+export { app, connection };
