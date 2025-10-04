@@ -2,6 +2,11 @@ import "dotenv/config";
 import { Client } from "pg";
 import express from "express";
 import { setUsersRoutes } from "../routes/usuarios.js";
+import { setCarritosRoutes } from "../routes/carritos.js";
+import { setCarritoItemsRoutes } from "../routes/carrito_items.js";
+import { setPedidoItemsRoutes } from "../routes/pedido_items.js";
+import { setPedidosRoutes } from "../routes/pedidos.js";
+import { setProductosRoutes } from "../routes/productos.js";
 
 const app = express();
 app.use(express.json());
@@ -17,6 +22,11 @@ const connection = new Client({
 connection.connect().then(() => console.log("connected"));
 
 await setUsersRoutes();
+await setCarritosRoutes();
+await setCarritoItemsRoutes();
+await setPedidoItemsRoutes();
+await setPedidosRoutes();
+await setProductosRoutes();
 
 app.listen(3000, () => {
     console.log("server running...");
