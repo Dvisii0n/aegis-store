@@ -4,15 +4,17 @@ import UsuariosService from "./services/usuariosService.js";
 const users = new UsuariosService();
 const productos = new ProductosService();
 
-// await u.createRow({
-//     nombre: "test",
-//     email: "test6@gmail.com",
-//     password: "password",
-//     telefono: "",
-//     direccion: "",
-// });
+const ejemploRequestBody = {
+    nombre: "test",
+    email: "test6@gmail.com",
+    password: "password",
+    telefono: "",
+    direccion: "",
+};
+
+await users.createRow(ejemploRequestBody);
 
 console.log(await users.fetchRows());
 console.log(await productos.fetchRows());
 
-// console.log(await u.fetchByID(3));
+console.log(await users.fetchByID(3));
