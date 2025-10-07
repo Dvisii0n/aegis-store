@@ -117,4 +117,16 @@ export default class Crud {
             }
         });
     }
+
+    async setFetchByName(name, response) {
+        const fetchQuery = `SELECT * FROM ${this.tableName} WHERE nombre = $1`;
+
+        await this.connection.query(fetchQuery, [name], (error, result) => {
+            if (error) {
+                response.send(error);
+            } else {
+                response.send(result.rows[0]);
+            }
+        });
+    }
 }

@@ -4,6 +4,7 @@ export const userRoutes = {
     fetchById: "/fetchUserById",
     update: "/updateUser",
     delete: "/deleteUser",
+    fetchByName: "/fetchByName",
 };
 
 export const carritosRoutes = {

@@ -1,5 +1,6 @@
 import { baseURL } from "./api.js";
 import { userRoutes } from "../routes/routes.js";
+import { response } from "express";
 
 export default class UsuariosService {
     async createRow(requestBody) {
@@ -75,6 +76,22 @@ export default class UsuariosService {
             });
         } catch (error) {
             throw `Row With ID: ${id} doesn't exist`;
+        }
+    }
+
+    async fetchByName(name) {
+        const url = `${baseURL}${userRoutes.fetchByName}/${name}`;
+        try {
+            const response = await fetch(url, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            throw error;
         }
     }
 }
