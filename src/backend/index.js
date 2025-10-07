@@ -5,16 +5,19 @@ const users = new UsuariosService();
 const productos = new ProductosService();
 
 const ejemploRequestBody = {
-    nombre: "test",
-    email: "test6@gmail.com",
-    password: "password",
-    telefono: "",
-    direccion: "",
+    // nombre: "mehashearon",
+    // email: "test2@gmail.com",
+    password: "hashthis",
+    // telefono: "",
+    // direccion: "",
 };
 
-await users.createRow(ejemploRequestBody);
+// await users.createRow(ejemploRequestBody);
 
-console.log(await users.fetchRows());
-console.log(await productos.fetchRows());
+// await users.updateRow(13, ejemploRequestBody);
+// console.log(await users.fetchByName("mehashearon"));
 
-console.log(await users.fetchByID(3));
+// console.log(await users.fetchRows());
+// console.log(await productos.fetchRows());
+
+// console.log(await users.fetchByID(3));
