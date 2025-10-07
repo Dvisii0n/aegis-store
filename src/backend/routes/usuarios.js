@@ -2,7 +2,6 @@ import { app, connection } from "../server/server.js";
 import { userRoutes } from "./routes.js";
 import Crud from "./crud.js";
 import bcrypt from "bcrypt";
-import { request } from "express";
 
 async function setUsersRoutes() {
     const tableName = "usuarios";
