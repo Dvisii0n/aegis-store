@@ -15,7 +15,7 @@ authApp.use(express.json());
 setAuthRoutes();
 
 authApp.listen(4000, () => {
-    console.log("auth server running...");
+    console.log("auth server running on port 4000...");
 });
 
 export { authApp };
