@@ -1,6 +1,5 @@
 import { baseURL } from "./api.js";
 import { userRoutes } from "../routes/routes.js";
-import { response } from "express";
 
 export default class UsuariosService {
     async createRow(requestBody) {
