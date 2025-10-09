@@ -1,18 +1,11 @@
 import express from "express";
-import dotenv from "dotenv";
-import path from "path";
-import { fileURLToPath } from "url";
 import { setAuthRoutes } from "./auth.js";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-dotenv.config({ path: path.join(__dirname, "..", ".env") });
+import { authRoutes } from "./authRoutes.js";
 
 const authApp = express();
 authApp.use(express.json());
 
-setAuthRoutes();
+setAuthRoutes(authRoutes);
 
 authApp.listen(4000, () => {
     console.log("auth server running on port 4000...");
