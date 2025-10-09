@@ -2,13 +2,14 @@ import { baseURL } from "./api.js";
 import { userRoutes } from "../routes/routes.js";
 
 export default class UsuariosService {
-    async createRow(requestBody) {
+    async createRow(requestBody, token) {
         const url = `${baseURL}${userRoutes.postData}`;
         try {
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
                 },
                 body: JSON.stringify(requestBody),
             });
@@ -17,13 +18,14 @@ export default class UsuariosService {
         }
     }
 
-    async fetchRows() {
+    async fetchRows(token) {
         const url = `${baseURL}${userRoutes.fetchData}`;
         try {
             const response = await fetch(url, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
                 },
             });
             const data = await response.json();
@@ -33,13 +35,14 @@ export default class UsuariosService {
         }
     }
 
-    async fetchByID(id) {
+    async fetchByID(id, token) {
         const url = `${baseURL}${userRoutes.fetchById}/${id}`;
         try {
             const response = await fetch(url, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
                 },
             });
             const data = await response.json();
@@ -49,13 +52,14 @@ export default class UsuariosService {
         }
     }
 
-    async updateRow(id, requestBody) {
+    async updateRow(id, requestBody, token) {
         const url = `${baseURL}${userRoutes.update}/${id}`;
         try {
             const response = await fetch(url, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
                 },
                 body: JSON.stringify(requestBody),
             });
@@ -64,13 +68,14 @@ export default class UsuariosService {
         }
     }
 
-    async deleteRow(id) {
+    async deleteRow(id, token) {
         const url = `${baseURL}${userRoutes.delete}/${id}`;
         try {
             const response = await fetch(url, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
                 },
             });
         } catch (error) {
@@ -78,13 +83,14 @@ export default class UsuariosService {
         }
     }
 
-    async fetchByName(name) {
+    async fetchByName(name, token) {
         const url = `${baseURL}${userRoutes.fetchByName}/${name}`;
         try {
             const response = await fetch(url, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
                 },
             });
 
