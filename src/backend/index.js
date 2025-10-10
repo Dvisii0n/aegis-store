@@ -1,9 +1,13 @@
 import ProductosService from "./services/productosService.js";
 import UsuariosService from "./services/usuariosService.js";
+import PedidosService from "./services/pedidosService.js";
+
 import AuthService from "./auth/authService.js";
 
 const users = new UsuariosService();
 const productos = new ProductosService();
+const pedidos = new PedidosService();
+
 const auth = new AuthService();
 
 const ejemploUsuario = {
@@ -21,12 +25,20 @@ const ejemploRegistro = {
 };
 
 const ejemploRefreshToken = {
-    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksIm5vbWJyZSI6InJlZ2lzdHJvNCIsImVtYWlsIjoicmVnaXN0cm80QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJC5DTTkzVzVUNE5tR2JZQXJqVzltSU9hODZ2MG52bnpTQlRUZlh4eW1vS21MUVNqUEMydjQyIiwidGVsZWZvbm8iOiIiLCJkaXJlY2Npb24iOiIiLCJyb2wiOiJjbGllbnRlIiwiZmVjaGFfY3JlYWNpb24iOiIyMDI1LTEwLTA5VDA0OjA1OjQ5LjgwMloiLCJpYXQiOjE3NTk5ODI3Nzl9.Ujdy-T1634R38vUU-fBAPyYauYNTv0owm50xzN0wmC8",
+    token: "",
 };
-// console.log(await auth.userLogin(ejemploUsuario));
+const tokens = await auth.userLogin(ejemploUsuario);
+
+console.log(tokens);
 
 // console.log(await auth.getNewAccessToken(ejemploRefreshToken));
 
-console.log(await auth.logout(ejemploRefreshToken));
-
 // console.log(await auth.registerUser(ejemploRegistro));
+
+// console.log(await users.fetchByName("test", tokens.accessToken));
+
+console.log(await users.fetchRows(tokens.accessToken));
+console.log(await productos.fetchRows(tokens.accessToken));
+console.log(await pedidos.fetchRows(tokens.accessToken));
+
+await auth.logout({ token: tokens.refreshToken });

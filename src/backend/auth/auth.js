@@ -120,7 +120,7 @@ async function setAuthRoutes(authRoutes) {
             [req.body.token],
             (err, result) => {
                 if (err) {
-                    return res.send(error);
+                    return res.send(err);
                 }
 
                 res.send(result);

@@ -31,7 +31,7 @@ export default class UsuariosService {
             const data = await response.json();
             return data;
         } catch (error) {
-            throw error;
+            return error;
         }
     }
 
@@ -48,7 +48,7 @@ export default class UsuariosService {
             const data = await response.json();
             return data;
         } catch (error) {
-            throw `Row With ID: ${id} doesn't exist`;
+            throw error;
         }
     }
 
@@ -64,7 +64,7 @@ export default class UsuariosService {
                 body: JSON.stringify(requestBody),
             });
         } catch (error) {
-            throw `Row With ID: ${id} doesn't exist`;
+            throw error;
         }
     }
 
@@ -79,7 +79,7 @@ export default class UsuariosService {
                 },
             });
         } catch (error) {
-            throw `Row With ID: ${id} doesn't exist`;
+            throw error;
         }
     }
 
@@ -97,7 +97,7 @@ export default class UsuariosService {
             const data = await response.json();
             return data;
         } catch (error) {
-            return null;
+            throw error;
         }
     }
 }

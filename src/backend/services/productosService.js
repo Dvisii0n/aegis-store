@@ -2,13 +2,14 @@ import { baseURL } from "./api.js";
 import { productosRoutes } from "../routes/routes.js";
 
 export default class ProductosService {
-    async createRow(requestBody) {
+    async createRow(requestBody, token) {
         const url = `${baseURL}${productosRoutes.postData}`;
         try {
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
                 },
                 body: JSON.stringify(requestBody),
             });
@@ -17,13 +18,14 @@ export default class ProductosService {
         }
     }
 
-    async fetchRows() {
+    async fetchRows(token) {
         const url = `${baseURL}${productosRoutes.fetchData}`;
         try {
             const response = await fetch(url, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
                 },
             });
             const data = await response.json();
@@ -33,13 +35,14 @@ export default class ProductosService {
         }
     }
 
-    async fetchByID(id) {
+    async fetchByID(id, token) {
         const url = `${baseURL}${productosRoutes.fetchById}/${id}`;
         try {
             const response = await fetch(url, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
                 },
             });
             const data = await response.json();
@@ -49,13 +52,14 @@ export default class ProductosService {
         }
     }
 
-    async updateRow(id, requestBody) {
+    async updateRow(id, requestBody, token) {
         const url = `${baseURL}${productosRoutes.update}/${id}`;
         try {
             const response = await fetch(url, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
                 },
                 body: JSON.stringify(requestBody),
             });
@@ -64,13 +68,14 @@ export default class ProductosService {
         }
     }
 
-    async deleteRow(id) {
+    async deleteRow(id, token) {
         const url = `${baseURL}${productosRoutes.delete}/${id}`;
         try {
             const response = await fetch(url, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
                 },
             });
         } catch (error) {
