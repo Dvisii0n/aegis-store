@@ -1,4 +1,4 @@
-import { authApp } from "./authServer.js";
+import { authApp } from "./authApp.js";
 import pkg from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
