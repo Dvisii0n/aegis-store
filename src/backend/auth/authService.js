@@ -1,9 +1,9 @@
-import { authBaseUrl } from "./authApi.js";
+import { baseURL } from "../services/api.js";
 import { authRoutes } from "./authRoutes.js";
 
 export default class AuthService {
     async userLogin(requestBody) {
-        const url = `${authBaseUrl}${authRoutes.login}`;
+        const url = `${baseURL}/auth${authRoutes.login}`;
         try {
             const response = await fetch(url, {
                 method: "POST",
@@ -20,7 +20,7 @@ export default class AuthService {
     }
 
     async registerUser(requestBody) {
-        const url = `${authBaseUrl}${authRoutes.signup}`;
+        const url = `${baseURL}/auth${authRoutes.signup}`;
         try {
             const response = await fetch(url, {
                 method: "POST",
@@ -37,7 +37,7 @@ export default class AuthService {
     }
 
     async getNewAccessToken(refreshTokenObj) {
-        const url = `${authBaseUrl}${authRoutes.token}`;
+        const url = `${baseURL}/auth${authRoutes.token}`;
         try {
             const response = await fetch(url, {
                 method: "POST",
@@ -54,7 +54,7 @@ export default class AuthService {
     }
 
     async logout(refreshTokenObj) {
-        const url = `${authBaseUrl}${authRoutes.logout}`;
+        const url = `${baseURL}/auth${authRoutes.logout}`;
         try {
             const response = await fetch(url, {
                 method: "DELETE",
