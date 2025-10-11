@@ -9,6 +9,7 @@ import { setCarritoItemsRoutes } from "../routes/carrito_items.js";
 import { setPedidoItemsRoutes } from "../routes/pedido_items.js";
 import { setPedidosRoutes } from "../routes/pedidos.js";
 import { setProductosRoutes } from "../routes/productos.js";
+import { authApp } from "../auth/authApp.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -16,6 +17,7 @@ const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.join(__dirname, "..", ".env") });
 
 const app = express();
+app.use("/auth", authApp);
 app.use(express.json());
 
 const connection = new Client({
@@ -35,8 +37,10 @@ await setPedidoItemsRoutes();
 await setPedidosRoutes();
 await setProductosRoutes();
 
-app.listen(3000, () => {
-    console.log("server running on port 3000...");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
 
 export { app, connection };
