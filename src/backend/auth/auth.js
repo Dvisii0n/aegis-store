@@ -16,9 +16,9 @@ const { sign, verify } = pkg;
 //Tokens perro tokens sin tokens no se hace NADA
 async function setAuthRoutes(authRoutes) {
     authApp.post(authRoutes.login, async (req, res) => {
-        const fetchQuery = `SELECT * FROM usuarios WHERE nombre = $1`;
+        const fetchQuery = `SELECT * FROM usuarios WHERE email = $1`;
 
-        connection.query(fetchQuery, [req.body.nombre], async (err, result) => {
+        connection.query(fetchQuery, [req.body.email], async (err, result) => {
             if (err) {
                 return res.send(err);
             }
@@ -63,7 +63,7 @@ async function setAuthRoutes(authRoutes) {
         });
     });
 
-    //Reminder: esta funcion nomas se puede ejecutar al llenar el formulario de registro
+    //reminder: esta funcion nomas se puede ejecutar al llenar el formulario de registro
     authApp.post(authRoutes.signup, async (req, res) => {
         const { nombre, email, password, telefono, direccion } = req.body;
 
