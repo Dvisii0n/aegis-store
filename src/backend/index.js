@@ -11,8 +11,7 @@ const pedidos = new PedidosService();
 const auth = new AuthService();
 
 const ejemploUsuario = {
-    nombre: "registro4",
-    // email: "test@gmail.com",
+    email: "test@gmail.com",
     password: "password",
 };
 

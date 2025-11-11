@@ -12,6 +12,7 @@ export default class AuthService {
                 },
                 body: JSON.stringify(requestBody),
             });
+
             const data = await response.json();
             return data;
         } catch (error) {

@@ -12,8 +12,6 @@ const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.join(__dirname, "..", ".env") });
 
 const { sign, verify } = pkg;
-
-//Tokens perro tokens sin tokens no se hace NADA
 async function setAuthRoutes(authRoutes) {
     authApp.post(authRoutes.login, async (req, res) => {
         const fetchQuery = `SELECT * FROM usuarios WHERE email = $1`;
@@ -142,7 +140,7 @@ function authenticateToken(req, res, next) {
 }
 
 function generateAccessToken(user) {
-    return sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "10m" });
+    return sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "100m" });
 }
 
 async function getPasswordHash(password) {
