@@ -1,0 +1,28 @@
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+}
+
+.contact-num,
+.contact-name,
+.card-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.billing-address,
+.payment-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.billing-address-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
+}
