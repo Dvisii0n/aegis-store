@@ -1,7 +1,10 @@
 import CarritosService from "../../backend/services/carritosService.js";
 import CarritoItemsService from "../../backend/services/carritoItemsService.js";
 import ProductosService from "../../backend/services/productosService.js";
-import { setDeleteCartItemEvents } from "../events/cartEvents.js";
+import {
+    setDeleteCartItemEvents,
+    setMakePaymentEvent,
+} from "../events/cartEvents.js";
 
 async function getCartItemsInfo() {
     const cart = new CarritosService();
@@ -21,6 +24,7 @@ async function getCartItemsInfo() {
     for (let item of cartItemsInfo) {
         const prodInfo = await prods.fetchByID(item.producto_id, accessToken);
         prodInfo["quantity"] = item.cantidad;
+        prodInfo["prodID"] = item.producto_id;
         prodInfo["itemCartID"] = item.id;
         itemsInfo.push(prodInfo);
     }
@@ -31,6 +35,7 @@ async function getCartItemsInfo() {
 function createCartItemDisplay(prodInfo) {
     const tr = document.createElement("tr");
     tr.setAttribute("data-cart-item-id", prodInfo.itemCartID);
+    tr.setAttribute("data-prod-id", prodInfo.prodID);
 
     const tdRemove = document.createElement("td");
 
@@ -78,8 +83,11 @@ export async function renderCartItems() {
     while (container.firstChild) {
         container.removeChild(container.firstChild);
     }
+
+    const prodIDs = [];
     for (let item of itemsInfo) {
         const prodRow = createCartItemDisplay(item);
+        prodIDs.push({ id: item.prodID, quantity: item.quantity });
         container.appendChild(prodRow);
     }
 
@@ -99,7 +107,11 @@ export async function renderCartItems() {
 
     cartTotal.textContent = `MXN$${cartSubtotal}`;
 
+    localStorage.setItem("orderItems", JSON.stringify(prodIDs));
+    localStorage.setItem("total", cartSubtotal);
+
     setDeleteCartItemEvents();
+    setMakePaymentEvent();
 }
 
 renderCartItems();
