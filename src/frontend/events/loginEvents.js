@@ -71,6 +71,14 @@ async function createCart(userID, accessToken) {
                 await createCart(res.userID, res.accessToken);
             }
 
+            if (location.search) {
+                history.replaceState(
+                    null,
+                    "",
+                    location.pathname + location.hash
+                );
+            }
+
             window.location.href = "../pages/index.html";
         } catch (error) {
             alert("Usuario no valido");
