@@ -92,15 +92,12 @@ export default class Crud {
     async setUpdate(id, body, response) {
         const updateQueryComponents = this.#getUpdateQueryComponents(id, body);
         const updateQuery = `UPDATE ${this.tableName} SET ${updateQueryComponents.updateQueryFormat} WHERE id = $1`;
-
         await this.connection.query(
             updateQuery,
             updateQueryComponents.updateArr,
             (error, result) => {
                 if (error) {
                     response.send(error);
-                } else {
-                    response.send("UPDATED");
                 }
             }
         );
