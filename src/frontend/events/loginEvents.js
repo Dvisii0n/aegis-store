@@ -1,6 +1,16 @@
 import AuthService from "../../backend/auth/authService.js";
+import CarritosService from "../../backend/services/carritosService.js";
 
 const auth = new AuthService();
+const cart = new CarritosService();
+
+async function createCart(userID, accessToken) {
+    try {
+        await cart.createRow({ usuario_id: userID }, accessToken);
+    } catch (error) {
+        throw error;
+    }
+}
 
 (function setRegisterEvent() {
     const signUpForm = document.querySelector(".sign-up>form");
@@ -21,17 +31,18 @@ const auth = new AuthService();
             alert(`El correo ${requestBody.email} ya esta en uso.`);
         } else {
             alert("Usuario registrado con exito, por favor inicia sesion");
+
             location.reload();
         }
     });
 })();
 
 (function setLoginEvent() {
-    const signUpForm = document.querySelector(".sign-in>form");
+    const signInForm = document.querySelector(".sign-in>form");
 
-    signUpForm.addEventListener("submit", async (e) => {
+    signInForm.addEventListener("submit", async (e) => {
         e.preventDefault();
-        const data = new FormData(signUpForm);
+        const data = new FormData(signInForm);
 
         const requestBody = {
             email: data.get("email"),
@@ -46,9 +57,20 @@ const auth = new AuthService();
             }
 
             alert("Sesion iniciada con exito");
-            console.log(res);
+
+            localStorage.setItem("userID", res.userID);
             localStorage.setItem("accessToken", res.accessToken);
             localStorage.setItem("refreshToken", res.refreshToken);
+
+            const cartExistsResponse = await cart.cartExists(
+                res.userID,
+                res.accessToken
+            );
+
+            if (cartExistsResponse.exists === false) {
+                await createCart(res.userID, res.accessToken);
+            }
+
             window.location.href = "../pages/index.html";
         } catch (error) {
             alert("Usuario no valido");
