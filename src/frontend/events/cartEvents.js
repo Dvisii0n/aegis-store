@@ -15,3 +15,11 @@ export function setDeleteCartItemEvents() {
         });
     });
 }
+
+export function setMakePaymentEvent() {
+    const paymentBtn = document.querySelector("#Subtotal>button");
+
+    paymentBtn.addEventListener("click", (e) => {
+        window.location.href = "../pages/payment.html";
+    });
+}
