@@ -1,5 +1,9 @@
 import ProductosService from "../../backend/services/productosService.js";
-import { setShowModalEvent, setCloseModalEvent } from "../events/shopEvents.js";
+import {
+    setShowModalEvent,
+    setCloseModalEvent,
+    setAddToCartEvent,
+} from "../events/shopEvents.js";
 const productsService = new ProductosService();
 
 function createProductModal(product, identifier) {
@@ -59,6 +63,7 @@ function createProductModal(product, identifier) {
     const input = document.createElement("input");
     input.type = "number";
     input.value = "1";
+    input.min = "1";
 
     const btnAdd = document.createElement("button");
     btnAdd.className = "normal";
@@ -96,6 +101,7 @@ function createProductModal(product, identifier) {
 function createProductCard(product, identifier) {
     const container = document.createElement("div");
     container.className = "pro";
+    container.setAttribute("data-id", product.id);
 
     const prodImg = document.createElement("img");
     prodImg.setAttribute("src", product.imagen_url);
@@ -156,4 +162,5 @@ function createProductCard(product, identifier) {
 
     setShowModalEvent();
     setCloseModalEvent();
+    setAddToCartEvent();
 })();
