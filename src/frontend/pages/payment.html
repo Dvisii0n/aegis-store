@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/src/frontend/styles/payment.css" />
+        <title>AEGIS</title>
+    </head>
+    <body>
+        <form class="payment-form">
+            <fieldset class="contact-name">
+                <legend>Detalles del cliente</legend>
+                <label for="name">Nombre </label>
+                <label for="last-name">Apellido</label>
+                <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    value="Rorro"
+                    required
+                />
+                <input
+                    type="text"
+                    name="last-name"
+                    id="last-name"
+                    value="Pirrorro"
+                />
+            </fieldset>
+            <fieldset class="contact-num">
+                <legend>Informacion de contacto</legend>
+                <label for="country-code">Codigo del pais</label>
+                <label for="phone-num">Numero de telefono</label>
+                <input
+                    type="text"
+                    name="country-code"
+                    id="country-code"
+                    value="+52"
+                    required
+                />
+                <input
+                    type="text"
+                    name="phone-num"
+                    id="phone-num"
+                    value="6691234567"
+                    required
+                />
+            </fieldset>
+            <fieldset class="billing-address">
+                <legend>Direccion de Envio</legend>
+                <label for="address">Direccion</label>
+                <input
+                    type="text"
+                    name="address"
+                    id="address"
+                    value="Calle #21 Villa Tutuli"
+                    required
+                />
+                <section class="billing-address-details">
+                    <label for="city">Ciudad</label>
+                    <label for="state">Estado</label>
+                    <input
+                        type="text"
+                        name="city"
+                        id="city"
+                        value="Mazatlan"
+                        required
+                    />
+                    <input
+                        type="text"
+                        name="state"
+                        id="state"
+                        value="Sinaloa"
+                        required
+                    />
+                    <label for="postal-code">Codigo postal</label>
+                    <label for="country">Pais</label>
+
+                    <input
+                        type="text"
+                        name="postal-code"
+                        id="postal-code"
+                        value="82123"
+                        required
+                    />
+
+                    <input
+                        type="text"
+                        name="country"
+                        id="country"
+                        value="Mexico"
+                        required
+                    />
+                </section>
+            </fieldset>
+            <fieldset class="payment-info">
+                <legend>Detalles de Tarjeta</legend>
+                <label for="card-num">Numero de tarjeta</label>
+                <input
+                    type="text"
+                    name="card-num"
+                    id="card-num"
+                    value="12345678910"
+                />
+                <section class="card-info">
+                    <label for="expiration-date">Fecha de vencimiento</label>
+                    <label for="cvv">CVV</label>
+                    <input
+                        type="text"
+                        name="expiration-date"
+                        id="expiration-date"
+                        value="20/29"
+                    />
+                    <input type="text" name="cvv" id="cvv" value="123" />
+                </section>
+            </fieldset>
+            <button type="submit">Realizar Pago</button>
+        </form>
+    </body>
+    <script type="module" src="/src/frontend/events/paymentEvents.js"></script>
+</html>
