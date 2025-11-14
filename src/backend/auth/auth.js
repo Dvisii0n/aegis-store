@@ -37,17 +37,41 @@ async function setAuthRoutes(authRoutes) {
                     );
 
                     res.send({
+                        userID: user.id,
                         msg: "Login Succesful",
                         accessToken: accessToken,
                         refreshToken: refreshToken,
                     });
                     //guarda el refresh token en la bd
                     connection.query(
-                        "INSERT INTO refreshtokens (token) VALUES ($1)",
-                        [refreshToken],
+                        `SELECT EXISTS(SELECT 1 FROM refreshTokens WHERE usuario_id = ${user.id})`,
                         (err, result) => {
                             if (err) {
                                 return res.send(err);
+                            }
+
+                            const existance = result.rows[0].exists;
+
+                            if (existance === false) {
+                                connection.query(
+                                    "INSERT INTO refreshtokens (usuario_id, token) VALUES ($1, $2)",
+                                    [user.id, refreshToken],
+                                    (err, result) => {
+                                        if (err) {
+                                            return res.send(err);
+                                        }
+                                    }
+                                );
+                            } else {
+                                connection.query(
+                                    "UPDATE refreshtokens SET token = $1 WHERE usuario_id = $2",
+                                    [refreshToken, user.id],
+                                    (err, result) => {
+                                        if (err) {
+                                            return res.send(err);
+                                        }
+                                    }
+                                );
                             }
                         }
                     );
