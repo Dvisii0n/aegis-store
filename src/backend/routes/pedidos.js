@@ -12,7 +12,18 @@ async function setPedidosRoutes() {
         authenticateToken,
         async (request, response) => {
             const body = request.body;
-            await crud.setPost(body, response);
+
+            console.log(`user order: ${JSON.stringify(body)} at ${new Date()}`);
+            connection.query(
+                `INSERT INTO pedidos (usuario_id, total) VALUES (${body.usuario_id}, ${body.total}) RETURNING id`,
+                (error, result) => {
+                    if (error) {
+                        response.send(error);
+                    } else {
+                        response.send(result.rows[0].id);
+                    }
+                }
+            );
         }
     );
 
