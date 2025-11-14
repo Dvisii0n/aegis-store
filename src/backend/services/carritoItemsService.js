@@ -82,4 +82,21 @@ export default class CarritoItemsService {
             throw `Row With ID: ${id} doesn't exist`;
         }
     }
+
+    async fetchByCartID(cartID, token) {
+        const url = `${baseURL}${carritoItemsRoutes.fetchByCartID}/${cartID}`;
+        try {
+            const response = await fetch(url, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            throw `Row With ID: ${cartID} doesn't exist`;
+        }
+    }
 }

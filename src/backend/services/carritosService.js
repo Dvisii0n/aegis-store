@@ -82,4 +82,38 @@ export default class CarritosService {
             throw `Row With ID: ${id} doesn't exist`;
         }
     }
+
+    async cartExists(userID, token) {
+        const url = `${baseURL}${carritosRoutes.cartExists}/${userID}`;
+        try {
+            const response = await fetch(url, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            throw `Row With ID: ${userID} doesn't exist`;
+        }
+    }
+
+    async fetchByUserID(userID, token) {
+        const url = `${baseURL}${carritosRoutes.fetchByUserID}/${userID}`;
+        try {
+            const response = await fetch(url, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            throw `Row With ID: ${userID} doesn't exist`;
+        }
+    }
 }

@@ -100,4 +100,22 @@ export default class UsuariosService {
             throw error;
         }
     }
+
+    async fetchByEmail(email, token) {
+        const url = `${baseURL}${userRoutes.fetchByEmail}/${email}`;
+        try {
+            const response = await fetch(url, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            throw error;
+        }
+    }
 }
