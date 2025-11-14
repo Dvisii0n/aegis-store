@@ -51,6 +51,33 @@ async function setCarritosRoutes() {
             await crud.setDelete(id, response);
         }
     );
+
+    app.get(
+        `${carritosRoutes.cartExists}/:userID`,
+        authenticateToken,
+        async (request, response) => {
+            const userID = request.params.userID;
+            await crud.setRowExists("usuario_id", userID, response);
+        }
+    );
+
+    app.get(
+        `${carritosRoutes.fetchByUserID}/:userID`,
+        authenticateToken,
+        async (request, response) => {
+            const userID = request.params.userID;
+            connection.query(
+                `SELECT * FROM carritos WHERE usuario_id = ${userID}`,
+                (error, result) => {
+                    if (error) {
+                        response.send(error);
+                    } else {
+                        response.send(result.rows[0]);
+                    }
+                }
+            );
+        }
+    );
 }
 
 export { setCarritosRoutes };

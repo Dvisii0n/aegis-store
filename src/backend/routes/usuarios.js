@@ -75,6 +75,15 @@ async function setUsersRoutes() {
             await crud.setFetchByName(name, response);
         }
     );
+
+    app.get(
+        `${userRoutes.fetchByEmail}/:email`,
+        authenticateToken,
+        async (request, response) => {
+            const email = request.params.email;
+            await crud.setFetchByEmail(email, response);
+        }
+    );
 }
 
 export { setUsersRoutes };

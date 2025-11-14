@@ -5,6 +5,7 @@ export const userRoutes = {
     update: "/updateUser",
     delete: "/deleteUser",
     fetchByName: "/fetchByName",
+    fetchByEmail: "/fetchByEmail",
 };
 
 export const carritosRoutes = {
@@ -13,6 +14,8 @@ export const carritosRoutes = {
     fetchById: "/fetchCarritoById",
     update: "/updateCarrito",
     delete: "/deleteCarrito",
+    cartExists: "/cartExists",
+    fetchByUserID: "/fetchByUserID",
 };
 
 export const carritoItemsRoutes = {
@@ -21,6 +24,7 @@ export const carritoItemsRoutes = {
     fetchById: "/fetchCarritoItemById",
     update: "/updateCarritoItem",
     delete: "/deleteCarritoItem",
+    fetchByCartID: "/fetchByCartID",
 };
 
 export const pedidoItemsRoutes = {

@@ -129,4 +129,28 @@ export default class Crud {
             }
         });
     }
+
+    async setFetchByEmail(email, response) {
+        const fetchQuery = `SELECT * FROM ${this.tableName} WHERE email = $1`;
+
+        await this.connection.query(fetchQuery, [email], (error, result) => {
+            if (error) {
+                response.send(error);
+            } else {
+                response.send(result.rows[0]);
+            }
+        });
+    }
+
+    async setRowExists(column, value, response) {
+        const existsQuery = `SELECT EXISTS(SELECT 1 FROM ${this.tableName} WHERE ${column} = $1)`;
+
+        await this.connection.query(existsQuery, [value], (error, result) => {
+            if (error) {
+                response.send(error);
+            } else {
+                response.send(result.rows[0]);
+            }
+        });
+    }
 }

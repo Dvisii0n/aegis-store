@@ -2,6 +2,7 @@ import { app, connection } from "../server/server.js";
 import { carritoItemsRoutes } from "./routes.js";
 import Crud from "./crud.js";
 import { authenticateToken } from "../auth/auth.js";
+import { request } from "express";
 
 async function setCarritoItemsRoutes() {
     const tableName = "carrito_items";
@@ -49,6 +50,24 @@ async function setCarritoItemsRoutes() {
         async (request, response) => {
             const id = request.params.id;
             await crud.setDelete(id, response);
+        }
+    );
+
+    app.get(
+        `${carritoItemsRoutes.fetchByCartID}/:cartID`,
+        authenticateToken,
+        async (request, response) => {
+            const cartID = request.params.cartID;
+            connection.query(
+                `SELECT * FROM carrito_items WHERE carrito_id = ${cartID}`,
+                (error, result) => {
+                    if (error) {
+                        response.send(error);
+                    } else {
+                        response.send(result.rows);
+                    }
+                }
+            );
         }
     );
 }
