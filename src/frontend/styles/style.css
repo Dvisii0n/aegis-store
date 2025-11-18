@@ -331,7 +331,7 @@ body {
 
 #sm-banner {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
@@ -380,7 +380,7 @@ body {
 
 #banner3 {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     padding: 0 80px;
 }
@@ -1175,4 +1175,114 @@ footer .copyright {
     border: 1px solid #e1e1e1;
     padding: 10px;
     font-size: 13px;
+}
+
+.pedido{
+   margin-left: 20px;
+}
+
+
+.Volver{
+    padding: 12px 20px;
+    background-color: #000;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    text-align: center;
+     transition: transform 0.2s ease, background-color 0.2s ease;
+     border-radius: 3px;
+     margin-left: 20px;
+}
+
+.Volver:hover{
+    background-color: #333;   /* Negro más claro */
+    transform: translateY(-2px);
+}
+
+    .Volver:active {
+    transform: scale(0.98);
+}
+
+
+
+/*Pagina producto solo  */
+
+
+
+.single-pro-details {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    text-align: left;
+}
+#prodetails .single-pro-details button {
+    background-color: #000000;
+    color: #fff;
+    
+}
+
+
+.single-pro-details .row-select {
+    display: flex;
+    width: 100%;
+    gap: 12px;
+}
+
+
+.single-pro-details select,
+.single-pro-details input[type="number"] {
+    flex: 1; /* ocupa 50% cada uno */
+    padding: 12px;
+    font-size: 15px;
+    border-radius: 6px;
+    border: 1px solid #d2d2d2;
+    background: #fff;
+    box-sizing: border-box;
+    
+}
+
+
+.single-pro-details input[type="number"] {
+    text-align: center;
+   
+}
+
+
+.single-pro-details .normal {
+    width: fit-content;
+    padding: 12px 26px;
+    background: #000;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+}
+
+
+.single-pro-details .normal:hover {
+    background: #333;
+    transition: .2s;
+}
+
+.closeDialog{
+  font-size: 14px;
+    font-weight: 600;
+    padding: 15px 30px;
+    color: black;
+    background-color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: 0, 2s;
+    width: 100%;  
+}
+
+#prodetails .single-pro-details input{
+        width: 70px;
+    height: 47px;
+    padding-left: 10px;
+    font-size: 16px;
+    margin-right: 10px;
 }

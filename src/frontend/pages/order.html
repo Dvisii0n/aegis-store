@@ -4,9 +4,62 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>AEGIS</title>
+        <link rel="stylesheet" href="/src/frontend/styles/style.css">
     </head>
     <body>
-        <h1>PEDIDO REALIZADO CON EXITO</h1>
-        <a href="/src/frontend/pages/cart.html">Volver al carrito</a>
+             <section id="header">
+            <a href="index.html"
+                ><img
+                    src="/src/frontend/assets/img/logored.png"
+                    class="logo"
+                    alt=""
+            /></a>
+
+            <div>
+                <ul id="navbar">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="shop.html">Tienda</a></li>
+                    <li><a href="about.html">Contacto</a></li>
+                    <li><a href="contact.html">Ubicacion</a></li>
+                    <li><a href="login.html">Perfil</a></li>
+                    <li id="lg-bag">
+                        <a class="active" href="cart.html"
+                            ><i class="fa-solid fa-cart-shopping"></i
+                        ></a>
+                    </li>
+                    <a href="#" id="close"><i class="far fa-times"></i></a>
+                </ul>
+            </div>
+            <div id="mobile">
+                <a href="cart.html"
+                    ><i class="fa-solid fa-cart-shopping"></i
+                ></a>
+                <i id="bar" class="fas fa-outdent"></i>
+            </div>
+        </section>
+<br>
+<br>
+        <h1 class="pedido">PEDIDO REALIZADO CON EXITO</h1>
+        <br>
+          <section id="cart" class="section-p1">
+            <table width="100%">
+                <thead>
+                    <tr>
+                      
+                        <td>Imagen</td>
+                        <td>Producto</td>
+                        <td>Precio</td>
+                        <td>Cantidad</td>
+                        <td>Subtotal</td>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+        <br>
+
+        
+
+      <a class="Volver" href="/src/frontend/pages/cart.html">Volver al carrito </a>
     </body>
 </html>
