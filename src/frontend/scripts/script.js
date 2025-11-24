@@ -13,3 +13,9 @@ if (close) {
     nav.classList.remove('active');
   });
 }
+
+
+<button class="white" onclick="window.location.href='tu-pagina.html'">
+  Conoce Más
+</button>
+
