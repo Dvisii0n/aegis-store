@@ -11,6 +11,19 @@ html {
 }
 
 /* ESTILOS GLOBALES*/
+@keyframes loading {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.waiting-svg {
+    animation: loading linear 700ms infinite;
+}
+
 dialog {
     border: none;
     border-radius: 12px;
@@ -226,7 +239,8 @@ body {
 
 #product1 .pro-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 20px;
     padding-top: 20px;
     flex-wrap: wrap;
 }
@@ -1065,6 +1079,9 @@ footer .copyright {
 
 #cart {
     overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #cart table {
@@ -1177,37 +1194,32 @@ footer .copyright {
     font-size: 13px;
 }
 
-.pedido{
-   margin-left: 20px;
+.pedido {
+    margin-left: 20px;
 }
 
-
-.Volver{
+.Volver {
     padding: 12px 20px;
     background-color: #000;
     color: white;
     text-decoration: none;
     font-weight: 600;
     text-align: center;
-     transition: transform 0.2s ease, background-color 0.2s ease;
-     border-radius: 3px;
-     margin-left: 20px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    border-radius: 3px;
+    margin-left: 20px;
 }
 
-.Volver:hover{
-    background-color: #333;   /* Negro más claro */
+.Volver:hover {
+    background-color: #333; /* Negro más claro */
     transform: translateY(-2px);
 }
 
-    .Volver:active {
+.Volver:active {
     transform: scale(0.98);
 }
 
-
-
 /*Pagina producto solo  */
-
-
 
 .single-pro-details {
     display: flex;
@@ -1218,16 +1230,13 @@ footer .copyright {
 #prodetails .single-pro-details button {
     background-color: #000000;
     color: #fff;
-    
 }
-
 
 .single-pro-details .row-select {
     display: flex;
     width: 100%;
     gap: 12px;
 }
-
 
 .single-pro-details select,
 .single-pro-details input[type="number"] {
@@ -1238,15 +1247,11 @@ footer .copyright {
     border: 1px solid #d2d2d2;
     background: #fff;
     box-sizing: border-box;
-    
 }
-
 
 .single-pro-details input[type="number"] {
     text-align: center;
-   
 }
-
 
 .single-pro-details .normal {
     width: fit-content;
@@ -1259,14 +1264,13 @@ footer .copyright {
     border: none;
 }
 
-
 .single-pro-details .normal:hover {
     background: #333;
-    transition: .2s;
+    transition: 0.2s;
 }
 
-.closeDialog{
-  font-size: 14px;
+.closeDialog {
+    font-size: 14px;
     font-weight: 600;
     padding: 15px 30px;
     color: black;
@@ -1276,13 +1280,18 @@ footer .copyright {
     border: none;
     outline: none;
     transition: 0, 2s;
-    width: 100%;  
+    width: 100%;
 }
 
-#prodetails .single-pro-details input{
-        width: 70px;
+#prodetails .single-pro-details input {
+    width: 70px;
     height: 47px;
     padding-left: 10px;
     font-size: 16px;
     margin-right: 10px;
+}
+
+.desc-td {
+    word-break: break-word;
+    white-space: normal;
 }

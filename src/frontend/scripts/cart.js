@@ -5,6 +5,7 @@ import {
     setDeleteCartItemEvents,
     setMakePaymentEvent,
 } from "../events/cartEvents.js";
+import { createWaitingElement } from "./utils.js";
 
 async function getCartItemsInfo() {
     const cart = new CarritosService();
@@ -77,41 +78,46 @@ function createCartItemDisplay(prodInfo) {
 }
 
 export async function renderCartItems() {
-    const itemsInfo = await getCartItemsInfo();
-    const container = document.querySelector("tbody");
+    try {
+        const itemsInfo = await getCartItemsInfo();
+        const container = document.querySelector("tbody");
 
-    while (container.firstChild) {
-        container.removeChild(container.firstChild);
+        while (container.firstChild) {
+            container.removeChild(container.firstChild);
+        }
+
+        const prodIDs = [];
+        for (let item of itemsInfo) {
+            const prodRow = createCartItemDisplay(item);
+            prodIDs.push({ id: item.prodID, quantity: item.quantity });
+            container.appendChild(prodRow);
+        }
+
+        const subtotals = document.querySelectorAll(".subtotal-prod");
+
+        let cartSubtotal = 0;
+        subtotals.forEach((subtotal) => {
+            cartSubtotal += Number.parseFloat(
+                subtotal.getAttribute("subtotal-amount")
+            );
+        });
+
+        const cartSub = document.querySelector(".cart-subtotal");
+        const cartTotal = document.querySelector(".cart-total");
+
+        cartSub.textContent = `MXN$${cartSubtotal}`;
+
+        cartTotal.textContent = `MXN$${cartSubtotal}`;
+
+        localStorage.setItem("orderItems", JSON.stringify(prodIDs));
+        localStorage.setItem("total", cartSubtotal);
+
+        setDeleteCartItemEvents();
+        setMakePaymentEvent();
+    } catch (error) {
+        const section = document.querySelector("#cart");
+        section.appendChild(createWaitingElement());
     }
-
-    const prodIDs = [];
-    for (let item of itemsInfo) {
-        const prodRow = createCartItemDisplay(item);
-        prodIDs.push({ id: item.prodID, quantity: item.quantity });
-        container.appendChild(prodRow);
-    }
-
-    const subtotals = document.querySelectorAll(".subtotal-prod");
-
-    let cartSubtotal = 0;
-    subtotals.forEach((subtotal) => {
-        cartSubtotal += Number.parseFloat(
-            subtotal.getAttribute("subtotal-amount")
-        );
-    });
-
-    const cartSub = document.querySelector(".cart-subtotal");
-    const cartTotal = document.querySelector(".cart-total");
-
-    cartSub.textContent = `MXN$${cartSubtotal}`;
-
-    cartTotal.textContent = `MXN$${cartSubtotal}`;
-
-    localStorage.setItem("orderItems", JSON.stringify(prodIDs));
-    localStorage.setItem("total", cartSubtotal);
-
-    setDeleteCartItemEvents();
-    setMakePaymentEvent();
 }
 
 renderCartItems();

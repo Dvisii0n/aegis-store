@@ -1,6 +1,6 @@
 /* PAGOOOOOOOO*/
 
-body{
+body {
     margin-top: 50px;
     margin-bottom: 50px;
 }
@@ -8,7 +8,7 @@ form {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    max-width: 420px;
+    max-width: 500px;
     margin: auto;
     background: #fff;
     padding: 28px;
@@ -19,16 +19,14 @@ form {
 
 fieldset {
     border: none;
-    padding: 0;   
-    margin: 0;    
+    padding: 0;
+    margin: 0;
 }
 
 legend {
     font-weight: bold;
     margin-bottom: 10px;
 }
-
-
 
 label {
     font-size: 14px;
@@ -39,7 +37,6 @@ label {
 }
 
 input {
-    width: 100%;
     padding: 11px;
     background: #f8f8f8;
     border: 1px solid #d4d4d4;
@@ -48,20 +45,17 @@ input {
     transition: all 0.25s ease;
 }
 
-
 input:hover {
     border-color: #000;
     background: #fff;
 }
 
-
 input:focus {
     outline: none;
     border-color: #000;
-    box-shadow: 0 0 0 3px rgba(0,0,0,0.15);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.15);
     background: #fff;
 }
-
 
 .contact-num,
 .contact-name,
@@ -71,7 +65,6 @@ input:focus {
     gap: 14px;
 }
 
-
 .billing-address,
 .payment-info {
     display: flex;
@@ -79,22 +72,19 @@ input:focus {
     gap: 14px;
 }
 
-
 .billing-address-details {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
 }
 
-
 .billing-address-details label {
     margin-bottom: 4px !important;
 }
 
 .billing-address-details input {
-    margin: 0 !important; 
+    margin: 0 !important;
 }
-
 
 .billing-address-details label:nth-of-type(1),
 .billing-address-details input:nth-of-type(1) {
@@ -116,9 +106,7 @@ input:focus {
     grid-column: 2;
 }
 
-
 button {
-    width: 100%;
     padding: 14px;
     background: #000;
     color: #fff;
@@ -130,12 +118,10 @@ button {
     transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-
 button:hover {
     transform: translateY(-3px);
     opacity: 0.9;
 }
-
 
 button:active {
     transform: scale(0.97);

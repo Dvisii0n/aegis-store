@@ -4,6 +4,8 @@ import {
     setCloseModalEvent,
     setAddToCartEvent,
 } from "../events/shopEvents.js";
+import { createWaitingElement } from "./utils.js";
+
 const productsService = new ProductosService();
 
 function createProductModal(product, identifier) {
@@ -151,16 +153,23 @@ function createProductCard(product, identifier) {
 
 (async function generateProducts() {
     const prodsContainer = document.querySelector(".pro-container");
-    const accessToken = localStorage.getItem("accessToken");
+    const loadingSvg = createWaitingElement();
+    prodsContainer.appendChild(loadingSvg);
+    try {
+        const accessToken = localStorage.getItem("accessToken");
 
-    const products = await productsService.fetchRows(accessToken);
-    products.forEach((prod) => {
-        const identifier = `P${products.indexOf(prod)}`;
-        const prodCard = createProductCard(prod, identifier);
-        prodsContainer.appendChild(prodCard);
-    });
+        const products = await productsService.fetchRows(accessToken);
+        prodsContainer.removeChild(loadingSvg);
+        products.forEach((prod) => {
+            const identifier = `P${products.indexOf(prod)}`;
+            const prodCard = createProductCard(prod, identifier);
+            prodsContainer.appendChild(prodCard);
+        });
 
-    setShowModalEvent();
-    setCloseModalEvent();
-    setAddToCartEvent();
+        setShowModalEvent();
+        setCloseModalEvent();
+        setAddToCartEvent();
+    } catch (error) {
+        console.log("waiting for server");
+    }
 })();

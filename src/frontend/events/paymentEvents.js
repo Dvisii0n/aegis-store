@@ -49,7 +49,6 @@ import UsuariosService from "../../backend/services/usuariosService.js";
 
             for (let product of prodIDs) {
                 const prodInfo = await prod.fetchByID(product.id, accessToken);
-                console.log(prodInfo);
                 await orderItem.createRow(
                     {
                         pedido_id: orderID,
@@ -61,7 +60,9 @@ import UsuariosService from "../../backend/services/usuariosService.js";
                 );
             }
 
-            window.location.href = "../pages/order.html";
+            alert("PEDIDO REALIZADO CON EXITO");
+
+            window.location.href = "../pages/orders.html";
         } catch (error) {
             console.log(error);
             alert(error);
