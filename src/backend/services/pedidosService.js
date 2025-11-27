@@ -84,4 +84,38 @@ export default class PedidosService {
             throw `Row With ID: ${id} doesn't exist`;
         }
     }
+
+    async getOrderItems(id, token) {
+        const url = `${baseURL}/getOrderItems/${id}`;
+        try {
+            const response = await fetch(url, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            throw `Row With ID: ${id} doesn't exist`;
+        }
+    }
+
+    async getUserOrders(id, token) {
+        const url = `${baseURL}/getUserOrders/${id}`;
+        try {
+            const response = await fetch(url, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            throw `Row With ID: ${id} doesn't exist`;
+        }
+    }
 }
