@@ -62,6 +62,42 @@ async function setPedidosRoutes() {
             await crud.setDelete(id, response);
         }
     );
+
+    app.get(
+        "/getOrderItems/:id",
+        authenticateToken,
+        async (request, response) => {
+            const id = request.params.id;
+            connection.query(
+                `SELECT * FROM getOrderItems(${id})`,
+                (error, result) => {
+                    if (error) {
+                        response.send(error);
+                    } else {
+                        response.send(result.rows);
+                    }
+                }
+            );
+        }
+    );
+
+    app.get(
+        "/getUserOrders/:id",
+        authenticateToken,
+        async (request, response) => {
+            const id = request.params.id;
+            connection.query(
+                `SELECT * FROM pedidos WHERE usuario_id = ${id}`,
+                (error, result) => {
+                    if (error) {
+                        response.send(error);
+                    } else {
+                        response.send(result.rows);
+                    }
+                }
+            );
+        }
+    );
 }
 
 export { setPedidosRoutes };
