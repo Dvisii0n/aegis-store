@@ -1,4 +1,3 @@
-/* ---- CONTENEDOR PRINCIPAL ---- */
 .single-pro-details {
     max-width: 450px;
     display: flex;
@@ -7,14 +6,12 @@
     margin-left: 40px;
 }
 
-/* ---- FORZAR QUE SELECT, INPUT Y BOTÓN SE ACOMODEN EN UNA FILA ---- */
 .single-pro-details select,
 .single-pro-details input[type="number"],
 .single-pro-details .normal {
     vertical-align: middle;
 }
 
-/* Convertimos la fila en flex SIN modificar el HTML */
 .single-pro-details select {
     display: inline-block;
     padding: 8px 10px;
@@ -34,7 +31,6 @@
     margin-right: 10px;
 }
 
-/* Botón */
 .single-pro-details .normal {
     padding: 10px 20px;
     background: black;
@@ -53,12 +49,10 @@
     align-items: center;
 }
 
-/* Evitar saltos raros del navegador */
 .single-pro-details p:nth-of-type(1) + h4 + h2 + .single-pro-details select {
     white-space: nowrap;
 }
 
-/* Ajuste extra por si hay espacios fantasmas o saltos en el HTML */
 .single-pro-details * {
     line-height: 1.2;
 }

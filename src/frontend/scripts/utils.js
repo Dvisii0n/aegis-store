@@ -33,3 +33,11 @@ export function formatTimestamp(timestamp) {
     const formatted = `${day}/${month}/${year} ${hours}:${minutes} ${suffix}`;
     return formatted;
 }
+
+export function setIsLoggedState() {
+    const isLogged = localStorage.getItem("userID");
+    if (isLogged !== null) {
+        const profileLink = document.querySelector(".profile-link > a");
+        profileLink.href = "profile.html";
+    }
+}

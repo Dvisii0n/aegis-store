@@ -28,13 +28,15 @@
             /></a>
 
             <div>
-                 <ul id="navbar">
-                    <li><a  href="index.html">Inicio</a></li>
+                <ul id="navbar">
+                    <li><a href="index.html">Inicio</a></li>
                     <li><a href="shop.html">Tienda</a></li>
                     <li><a href="about.html">Contacto</a></li>
                     <li><a href="contact.html">Ubicacion</a></li>
                     <li><a href="orders.html">Ordenes</a></li>
-                    <li><a href="login.html">Perfil</a></li>
+                    <li class="profile-link">
+                        <a href="login.html">Perfil</a>
+                    </li>
                     <li id="lg-bag">
                         <a href="cart.html"
                             ><i class="fa-solid fa-cart-shopping"></i
@@ -52,8 +54,8 @@
         </section>
 
         <section id="page-header" class="about-header">
-            <h2>Vamo a hablar.</h2>
-            <p>Dejanos un mensaje Nos gusta escucharte</p>
+            <h2>El Carrito</h2>
+            <p>Si sirve se lo juro</p>
         </section>
 
         <section id="cart" class="section-p1">
@@ -99,10 +101,15 @@
                         <td><strong class="cart-total"></strong></td>
                     </tr>
                 </table>
-                <button class="normal" onclick="window.location.href='payment.html'">Procede al pago</button>
+                <button
+                    class="normal"
+                    onclick="window.location.href='payment.html'"
+                >
+                    Procede al pago
+                </button>
             </div>
         </section>
-        
+
         <script type="module" src="/src/frontend/scripts/cart.js"></script>
         <script src="/src/frontend/scripts/script.js"></script>
     </body>

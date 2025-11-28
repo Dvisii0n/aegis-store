@@ -4,7 +4,7 @@ import {
     setCloseModalEvent,
     setAddToCartEvent,
 } from "../events/shopEvents.js";
-import { createWaitingElement } from "./utils.js";
+import { createWaitingElement, setIsLoggedState } from "./utils.js";
 
 const productsService = new ProductosService();
 
@@ -173,3 +173,5 @@ function createProductCard(product, identifier) {
         console.log("waiting for server");
     }
 })();
+
+setIsLoggedState();

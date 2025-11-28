@@ -1,0 +1,65 @@
+body {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 500px;
+    gap: 12px;
+}
+
+img {
+    align-self: center;
+}
+
+label {
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+    display: block;
+}
+
+input {
+    padding: 10px;
+    background: #f8f8f8;
+    border: 1px solid #d4d4d4;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.25s ease;
+}
+
+input:hover {
+    border-color: #000;
+    background: #fff;
+}
+
+input:focus {
+    border-color: #000;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.15);
+    background: #fff;
+}
+
+button {
+    padding: 14px;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 17px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    opacity: 0.9;
+}
+
+button:active {
+    transform: scale(0.97);
+}

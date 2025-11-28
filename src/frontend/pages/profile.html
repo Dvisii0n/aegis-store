@@ -3,12 +3,13 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>AEGIS</title>
+        <link rel="stylesheet" href="/src/frontend/styles/profile.css" />
         <link rel="stylesheet" href="/src/frontend/styles/style.css" />
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         />
+        <title>Perfil</title>
     </head>
     <body>
         <section id="header">
@@ -25,9 +26,9 @@
                     <li><a href="shop.html">Tienda</a></li>
                     <li><a href="about.html">Contacto</a></li>
                     <li><a href="contact.html">Ubicacion</a></li>
-                    <li><a class="active" href="orders.html">Ordenes</a></li>
+                    <li><a href="orders.html">Ordenes</a></li>
                     <li class="profile-link">
-                        <a href="login.html">Perfil</a>
+                        <a class="active" href="login.html">Perfil</a>
                     </li>
                     <li id="lg-bag">
                         <a href="cart.html"
@@ -44,24 +45,23 @@
                 <i id="bar" class="fas fa-outdent"></i>
             </div>
         </section>
-        <br />
-        <br />
-        <h1 class="pedido">ORDENES</h1>
-        <br />
-        <section id="cart" class="section-p1">
-            <table width="100%">
-                <thead>
-                    <tr>
-                        <td>Estado</td>
-                        <td>Descripcion</td>
-                        <td>Fecha</td>
-                        <td>Total</td>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </section>
-        <br />
+        <form class="profile-info">
+            <img
+                src="/src/frontend/assets/img/profile.png"
+                alt="foto de perfil"
+                width="250px"
+            />
+            <label for="profile-name">Nombre</label>
+            <input id="profile-name" readonly />
+            <label for="profile-email">Correo</label>
+            <input id="profile-email" readonly />
+            <label for="profile-num">Numero de telefono</label>
+            <input id="profile-num" readonly />
+            <label for="profile-address">Direccion de Envio</label>
+            <input id="profile-address" readonly />
+            <button class="logout-btn" type="button">Cerrar Sesion</button>
+        </form>
     </body>
-    <script type="module" src="/src/frontend/scripts/orders.js"></script>
+    <script type="module" src="/src/frontend/scripts/profile.js"></script>
+    <script type="module" src="/src/frontend/events/profileEvents.js"></script>
 </html>

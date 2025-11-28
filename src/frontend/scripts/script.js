@@ -1,3 +1,5 @@
+import { setIsLoggedState } from "./utils.js";
+
 const bar = document.getElementById("bar");
 const nav = document.getElementById("navbar");
 const close = document.getElementById("close");
@@ -13,3 +15,5 @@ if (close) {
         nav.classList.remove("active");
     });
 }
+
+setIsLoggedState();

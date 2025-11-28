@@ -1,5 +1,10 @@
 import PedidosService from "../../backend/services/pedidosService.js";
-import { getAccessToken, getUserID, formatTimestamp } from "./utils.js";
+import {
+    getAccessToken,
+    getUserID,
+    formatTimestamp,
+    setIsLoggedState,
+} from "./utils.js";
 
 const orders = new PedidosService();
 
@@ -68,4 +73,5 @@ async function getOrderData() {
     }
 }
 
+setIsLoggedState();
 getOrderData();
