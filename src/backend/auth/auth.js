@@ -38,6 +38,7 @@ async function setAuthRoutes(authRoutes) {
 
                     res.send({
                         userID: user.id,
+                        role: user.rol,
                         msg: "Login Succesful",
                         accessToken: accessToken,
                         refreshToken: refreshToken,
