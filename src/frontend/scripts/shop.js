@@ -173,5 +173,3 @@ function createProductCard(product, identifier) {
         console.log("waiting for server");
     }
 })();
-
-setIsLoggedState();

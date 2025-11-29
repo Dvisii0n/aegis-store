@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../../styles/admin.css" />
+        <title>Administar Tienda</title>
+    </head>
+    <body>
+        <navbar>
+            <h1>Aegis Store</h1>
+            <ul>
+                <a href="stats.html">Estadisticas</a>
+            </ul>
+            <ul>
+                <a href="ordersData.html">Pedidos</a>
+            </ul>
+            <ul>
+                <a href="inventory.html">Inventario</a>
+            </ul>
+
+            <ul>
+                <button
+                    class="home-btn"
+                    onclick="window.location.href='../index.html'"
+                >
+                    Volver
+                </button>
+            </ul>
+        </navbar>
+        <table class="orders-table">
+            <tr>
+                <th>Estatus</th>
+                <th>Usuario</th>
+                <th>Descripcion</th>
+                <th>Total</th>
+                <th>Fecha</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Finalizar Pedido</th>
+            </tr>
+        </table>
+    </body>
+    <script type="module" src="/src/frontend/scripts/ordersData.js"></script>
+</html>

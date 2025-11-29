@@ -5,7 +5,7 @@ import {
     setDeleteCartItemEvents,
     setMakePaymentEvent,
 } from "../events/cartEvents.js";
-import { createWaitingElement, setIsLoggedState } from "./utils.js";
+import { createWaitingElement } from "./utils.js";
 
 async function getCartItemsInfo() {
     const cart = new CarritosService();
@@ -120,5 +120,4 @@ export async function renderCartItems() {
     }
 }
 
-setIsLoggedState();
 renderCartItems();

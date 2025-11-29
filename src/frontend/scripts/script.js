@@ -1,4 +1,4 @@
-import { setIsLoggedState } from "./utils.js";
+import { setIsLoggedState, setRoleState } from "./utils.js";
 
 const bar = document.getElementById("bar");
 const nav = document.getElementById("navbar");
@@ -16,4 +16,16 @@ if (close) {
     });
 }
 
+function setAdminPageLink() {
+    const btn = document.querySelector("#navbar>.admin-btn");
+
+    if (btn !== null) {
+        btn.addEventListener("click", (e) => {
+            window.location.href = "../pages/admin/stats.html";
+        });
+    }
+}
+
 setIsLoggedState();
+setRoleState();
+setAdminPageLink();

@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+body {
+    font-family: "Spartan", sans-serif;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+ul {
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    transition: all 250ms ease;
+}
+
+a:hover {
+    color: rgb(163, 163, 163);
+}
+
+navbar {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+    padding: 0px 15px;
+}
+
+.home-btn {
+    padding: 14px;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 17px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.home-btn:hover {
+    transform: translateY(-3px);
+    opacity: 0.9;
+}
+
+.home-btn:active {
+    transform: scale(0.97);
+}
+
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 8px;
+}
+
+.stats-container,
+.plots-container {
+    margin: 0px 25px;
+}
+
+.sales-plot,
+.users-plot {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+    border-radius: 24px;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 18px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+}
+
+table {
+    border-spacing: 0;
+    padding: 25px;
+}
+
+th {
+    border-bottom: 1px solid;
+    padding: 10px;
+}
+
+tr {
+    border-spacing: 10px;
+}
+
+td {
+    padding: 12px;
+    justify-content: center;
+    align-items: center;
+}
+
+.complete-btn {
+    padding: 8px;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.complete-btn:hover {
+    transform: translateY(-5px);
+}
+
+.completed {
+    color: rgb(0, 145, 0);
+}

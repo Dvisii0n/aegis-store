@@ -10,6 +10,7 @@ import { setCarritoItemsRoutes } from "../routes/carrito_items.js";
 import { setPedidoItemsRoutes } from "../routes/pedido_items.js";
 import { setPedidosRoutes } from "../routes/pedidos.js";
 import { setProductosRoutes } from "../routes/productos.js";
+import { setStatsRoutes } from "../routes/stats.js";
 import { authApp } from "../auth/authApp.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -39,6 +40,7 @@ await setCarritoItemsRoutes();
 await setPedidoItemsRoutes();
 await setPedidosRoutes();
 await setProductosRoutes();
+await setStatsRoutes();
 
 const PORT = process.env.PORT || 3000;
 

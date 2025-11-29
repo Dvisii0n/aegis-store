@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../../styles/admin.css" />
+        <title>Administar Tienda</title>
+    </head>
+    <body>
+        <navbar>
+            <h1>Aegis Store</h1>
+            <ul>
+                <a href="stats.html">Estadisticas</a>
+            </ul>
+            <ul>
+                <a href="ordersData.html">Pedidos</a>
+            </ul>
+            <ul>
+                <a href="inventory.html">Inventario</a>
+            </ul>
+
+            <ul>
+                <button
+                    class="home-btn"
+                    onclick="window.location.href='../index.html'"
+                >
+                    Volver
+                </button>
+            </ul>
+        </navbar>
+
+        <section class="stats-container">
+            <div class="stat">
+                Usuarios Registrados:
+                <div class="total-users"></div>
+            </div>
+            <div class="stat">
+                Pedidos Realizados:
+                <div class="total-orders"></div>
+            </div>
+            <div class="stat">
+                Articulos Vendidos:
+                <div class="total-sold-items"></div>
+            </div>
+            <div class="stat">
+                Total Ventas:
+                <div class="total-sales"></div>
+            </div>
+        </section>
+        <section class="plots-container">
+            <p>Ventas Completadas:</p>
+            <div class="sales-plot"></div>
+            <p>Usuarios Registrados:</p>
+            <div class="users-plot"></div>
+        </section>
+    </body>
+    <script type="module" src="/src/frontend/scripts/statsPage.js"></script>
+</html>

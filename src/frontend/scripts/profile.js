@@ -6,6 +6,7 @@ const users = new UsuariosService();
 async function getUserData() {
     const accessToken = getAccessToken();
     const userID = getUserID();
+
     return await users.fetchByID(userID, accessToken);
 }
 
@@ -14,6 +15,7 @@ async function getUserData() {
     const email = document.querySelector("#profile-email");
     const profileNum = document.querySelector("#profile-num");
     const profileAddress = document.querySelector("#profile-address");
+
     try {
         const data = await getUserData();
         name.value = data.nombre;
@@ -21,6 +23,7 @@ async function getUserData() {
         profileNum.value = data.telefono;
         profileAddress.value = data.direccion;
     } catch (error) {
+        alert("Usuario no encontrado, por favor inicia sesion");
         window.location.href = "../pages/login.html";
     }
 })();

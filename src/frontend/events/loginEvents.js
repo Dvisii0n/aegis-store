@@ -61,6 +61,7 @@ async function createCart(userID, accessToken) {
             localStorage.setItem("userID", res.userID);
             localStorage.setItem("accessToken", res.accessToken);
             localStorage.setItem("refreshToken", res.refreshToken);
+            localStorage.setItem("role", res.role);
 
             const cartExistsResponse = await cart.cartExists(
                 res.userID,

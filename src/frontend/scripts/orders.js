@@ -3,7 +3,8 @@ import {
     getAccessToken,
     getUserID,
     formatTimestamp,
-    setIsLoggedState,
+    createWaitingElement,
+    buildDescription,
 } from "./utils.js";
 
 const orders = new PedidosService();
@@ -26,27 +27,22 @@ function buildOrderContainer(orderData) {
 
     tr.appendChild(tdState);
     tr.appendChild(tdDesc);
-    tr.appendChild(tdDate);
     tr.appendChild(tdTotal);
+    tr.appendChild(tdDate);
 
     return tr;
-}
-
-function buildDescription(itemsData) {
-    let desc = "";
-    itemsData.forEach((item) => {
-        desc = desc.concat(`${item.name} x${item.quantity}\n`);
-    });
-
-    return desc;
 }
 
 async function getOrderData() {
     const accessToken = getAccessToken();
     const container = document.querySelector("table>tbody");
+    const section = document.querySelector("#cart");
     const userID = getUserID();
+    const loadingSvg = createWaitingElement();
+    section.appendChild(loadingSvg);
     try {
         const userOrders = await orders.getUserOrders(userID, accessToken);
+        section.removeChild(loadingSvg);
         userOrders.forEach(async (order) => {
             const orderID = order.id;
             const orderData = {
@@ -73,5 +69,4 @@ async function getOrderData() {
     }
 }
 
-setIsLoggedState();
 getOrderData();
