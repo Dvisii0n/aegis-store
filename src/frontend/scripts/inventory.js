@@ -26,9 +26,9 @@ function setDeleteProduct(btn) {
             try {
                 await prods.deleteRow(
                     e.target.getAttribute("data-id"),
-                    getAccessToken(),
-                    window.location.reload()
+                    getAccessToken()
                 );
+                window.location.reload();
             } catch (error) {
                 alert("ERROR: Este producto no se puede eliminar");
             }
@@ -49,8 +49,12 @@ function setAddProductSubmit() {
             categoria: formData.get("categoria"),
             talla: formData.get("talla"),
             color: formData.get("color"),
-            imagen_url: URL.createObjectURL(formData.get("imagen")),
+            imagen_url: `/src/frontend/assets/img/${
+                formData.get("imagen").name
+            }`,
         };
+
+        console.log(data.imagen_url);
 
         try {
             const token = getAccessToken();
