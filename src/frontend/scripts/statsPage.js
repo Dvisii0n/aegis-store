@@ -2,7 +2,7 @@ import Plotly from "https://esm.sh/plotly.js-dist-min";
 import { requestPgFunction } from "./utils.js";
 
 async function renderSalesPlot() {
-    const salesDates = await requestPgFunction("countOrders");
+    const salesDates = await requestPgFunction("countOrders", true);
     const colorRGB = "rgba(26, 182, 34, 1)";
     const dates = salesDates.map((date) => date.dia);
     const values = salesDates.map((date) => date.total);
@@ -31,7 +31,7 @@ async function renderSalesPlot() {
 }
 
 async function renderUsersPlot() {
-    const userDates = await requestPgFunction("countUsers");
+    const userDates = await requestPgFunction("countUsers", true);
 
     const dates = userDates.map((date) => date.dia);
     const values = userDates.map((date) => date.total);
@@ -58,10 +58,13 @@ async function renderUsersPlot() {
 
 (async function renderStats() {
     try {
-        const totalOrders = await requestPgFunction("getOrderCount");
-        const totalSoldItems = await requestPgFunction("getOrderItemsCount");
-        const totalSales = await requestPgFunction("getTotalSales");
-        const totalUsers = await requestPgFunction("getUserCount");
+        const totalOrders = await requestPgFunction("getOrderCount", true);
+        const totalSoldItems = await requestPgFunction(
+            "getOrderItemsCount",
+            true
+        );
+        const totalSales = await requestPgFunction("getTotalSales", true);
+        const totalUsers = await requestPgFunction("getUserCount", true);
 
         const listData = [
             { className: ".total-orders", value: totalOrders.countorders },

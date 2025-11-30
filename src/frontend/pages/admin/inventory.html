@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../../styles/admin.css" />
+        <title>Administar Tienda</title>
+    </head>
+    <body>
+        <navbar>
+            <h1>Aegis Store</h1>
+            <ul>
+                <a href="stats.html">Estadisticas</a>
+            </ul>
+            <ul>
+                <a href="ordersData.html">Pedidos</a>
+            </ul>
+            <ul>
+                <a href="inventory.html">Inventario</a>
+            </ul>
+
+            <ul>
+                <button
+                    class="home-btn"
+                    onclick="window.location.href='../index.html'"
+                >
+                    Volver
+                </button>
+            </ul>
+        </navbar>
+        <section class="inventory-buttons">
+            <button class="add-product">Agregar Producto</button>
+        </section>
+
+        <dialog class="add-product-modal">
+            <form class="product-form">
+                <legend class="form-title">Agregar Producto</legend>
+                <fieldset class="product-basic">
+                    <legend>Información del producto</legend>
+
+                    <label for="nombre">Nombre</label>
+                    <label for="descripcion">Descripción</label>
+
+                    <input type="text" name="nombre" id="nombre" required />
+
+                    <input
+                        type="text"
+                        name="descripcion"
+                        id="descripcion"
+                        required
+                    />
+                </fieldset>
+
+                <fieldset class="product-details">
+                    <legend>Detalles</legend>
+
+                    <label for="precio">Precio (MXN)</label>
+                    <label for="stock">Stock</label>
+
+                    <input
+                        type="number"
+                        name="precio"
+                        id="precio"
+                        step="0.01"
+                        required
+                    />
+
+                    <input type="number" name="stock" id="stock" required />
+
+                    <section class="more-product-details">
+                        <label for="categoria">Categoría</label>
+                        <label for="talla">Talla</label>
+
+                        <input
+                            type="text"
+                            name="categoria"
+                            id="categoria"
+                            required
+                        />
+
+                        <input type="text" name="talla" id="talla" required />
+
+                        <label for="color">Color</label>
+                        <label for="imagen">Imagen</label>
+
+                        <input type="text" name="color" id="color" required />
+
+                        <input
+                            type="file"
+                            name="imagen"
+                            id="imagen"
+                            accept="image/*"
+                        />
+                    </section>
+                </fieldset>
+
+                <button type="submit">Guardar Producto</button>
+                <button type="button" class="close">Cerrar</button>
+            </form>
+        </dialog>
+
+        <section class="inventory-display">
+            <table class="inventory-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Categoria</th>
+                        <th>Talla</th>
+                        <th>Color</th>
+                        <th>Imagen</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+            </table>
+        </section>
+    </body>
+    <script type="module" src="/src/frontend/scripts/inventory.js"></script>
+</html>

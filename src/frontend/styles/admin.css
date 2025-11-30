@@ -32,7 +32,9 @@ navbar {
     padding: 0px 15px;
 }
 
-.home-btn {
+.home-btn,
+.add-product,
+.edit-product {
     padding: 14px;
     background: #000;
     color: #fff;
@@ -44,7 +46,14 @@ navbar {
     transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-.home-btn:hover {
+.inventory-buttons {
+    display: flex;
+    gap: 12px;
+    padding: 30px 0px 0px 30px;
+}
+.home-btn:hover,
+.add-product:hover,
+.edit-product:hover {
     transform: translateY(-3px);
     opacity: 0.9;
 }
@@ -82,12 +91,15 @@ navbar {
 
 table {
     border-spacing: 0;
-    padding: 25px;
+    justify-self: center;
 }
 
 th {
-    border-bottom: 1px solid;
     padding: 10px;
+}
+
+th {
+    border-bottom: 1px solid black;
 }
 
 tr {
@@ -98,9 +110,17 @@ td {
     padding: 12px;
     justify-content: center;
     align-items: center;
+    border-bottom: 1px solid #d3d3d3;
 }
 
-.complete-btn {
+.form-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.complete-btn,
+form > button,
+.delete-btn {
     padding: 8px;
     background: #000;
     color: #fff;
@@ -112,10 +132,71 @@ td {
     transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
+input {
+    height: 25px;
+    border-radius: 8px;
+    border: 1px solid black;
+}
+
+#imagen {
+    border: none;
+    border-radius: 0px;
+}
+
+fieldset {
+    border-radius: 12px;
+    border-color: #eeeded;
+}
+
+form > button {
+    max-width: 150px;
+    align-self: center;
+}
+
 .complete-btn:hover {
     transform: translateY(-5px);
 }
 
+.delete-btn:hover {
+    transform: scale(1.1);
+    background-color: red;
+}
+
+form > button:hover {
+    transform: scale(1.03);
+}
+
 .completed {
     color: rgb(0, 145, 0);
+}
+
+.prod-img {
+    border-radius: 8px;
+    transition: transform 0.5s ease;
+    cursor: zoom-in;
+}
+
+.prod-img:active {
+    transform: translateX(-400px) scale(5);
+}
+
+.add-product-modal {
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+    border-radius: 24px;
+}
+
+.product-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.product-basic,
+.product-details,
+.more-product-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-width: 500px;
 }

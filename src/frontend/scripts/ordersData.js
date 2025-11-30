@@ -8,7 +8,7 @@ function setCompleteEvent(btn) {
     btn.addEventListener("click", async (e) => {
         const orderID = e.target.getAttribute("data-id");
 
-        await requestPgFunction(`completeOrder/${orderID}`);
+        await requestPgFunction(`completeOrder/${orderID}`, true);
         window.location.reload();
 
         await renderOrdersInfo();
@@ -64,11 +64,12 @@ function buildOrderAdminContainer(orderData) {
 
 async function renderOrdersInfo() {
     const container = document.querySelector(".orders-table");
-    const data = await requestPgFunction("getOrdersInfo");
+    const data = await requestPgFunction("getOrdersInfo", true);
 
     data.forEach(async (order) => {
         const orderItems = await requestPgFunction(
-            `getOrderItems/${order.order_id}`
+            `getOrderItems/${order.order_id}`,
+            true
         );
         const orderData = {
             order_id: order.order_id,

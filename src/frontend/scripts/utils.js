@@ -56,9 +56,14 @@ export function setRoleState() {
     }
 }
 
-export async function requestPgFunction(endpoint) {
+export async function requestPgFunction(endpoint, stats) {
     const token = getAccessToken();
-    const url = `${baseURL}/stats/${endpoint}`;
+    let url = `${baseURL}/stats/${endpoint}`;
+
+    if (!stats) {
+        url = `${baseURL}/${endpoint}`;
+    }
+
     try {
         const response = await fetch(url, {
             method: "GET",
