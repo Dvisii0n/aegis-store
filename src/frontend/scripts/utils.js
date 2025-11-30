@@ -69,6 +69,7 @@ export async function requestPgFunction(endpoint, stats) {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
                 Authorization: `Bearer ${token}`,
             },
         });
